@@ -1,0 +1,11 @@
+{{ define "main" }}
+<div class="row justify-content-center">
+  <div class="col-lg-7 pb-5 text-center">
+    <h1>{{ .Title }}</h1>
+    <p>{{ .Params.Lead | safeHTML }}</p>
+    <a class="btn btn-dark px-3" href="https://gethyas.com/docs/start-here/getting-started/" role="button">Get Started</a>
+    <a class="btn btn-outline-dark px-3" href="https://github.com/gethyas/hyas/discussions" role="button">View Discussions</a>
+    <p class="meta">Open-source MIT Licensed. <a href="https://github.com/gethyas/hyas">Hyas v{{ $data := getJSON "https://raw.githubusercontent.com/gethyas/hyas/master/package.json" }}{{ $data.version }}</a></p>
+  </div>
+</div>
+{{ end }}
