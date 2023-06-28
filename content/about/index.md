@@ -1,8 +1,8 @@
 ---
 title : "About me"
 breadcrump: "about"
-description: "A site with texts."
-lead: "This is my personal website. It contains pointers to some of my online activities."
+description: "About myself"
+lead: ""
 date: 2020-04-17T12:18:10+00:00
 lastmod: 2020-04-17T12:18:10+00:00
 draft: false
@@ -95,9 +95,8 @@ I like sports, traveling, photography and more.
 - [Last.fm](http://last.fm/user/djspad)
 
 ### 📪 Contact
-If you wish to contact me, please&nbsp;use the email <img class="" title="Emai_egg" src="http://www.mfasold.net/blog/wp-content/uploads/Emai_egg.png" alt="What's in it?" width="123" height="28" />. Occasionally,
-              emails from unknown senders get automatically marked as spam. You can prevent
-              this by inserting "#nospam#" to the subject.
+If you wish to contact me, please&nbsp;use <img class="" title="Emai_egg" src="eml_egg.jpg" alt="What's in it?" width="118" height="22" />. You may try
+inserting "#nospam#" to the subject.
 
 
 

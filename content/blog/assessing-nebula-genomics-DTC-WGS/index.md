@@ -1,7 +1,7 @@
 ---
-title: "A Bioinformatician's Perspective on Direct-to-Consumer Whole-Genome Sequencing Results from Nebula Genomics"
+title: "A Bioinformatician's Perspective on Direct-to-Consumer Whole-Genome Sequencing from Nebula Genomics"
 description: "A personal assessment of the results from Nebula Genomics’ Deep Whole Genome Sequencing product"
-lead: ""
+lead: "Part 1: Introduction and assessment of the downloadable data"
 date: 2023-06-22
 lastmod: 2023-06-22
 draft: false
@@ -161,21 +161,29 @@ Here is another way to look at the coverage:
 
 <div id="covGraph" style="height: 360px"></div>
 
-The mean coverage (in the protein-coding region genes) is 32X, and 88% of positions have a coverage above 20x. Unfortunately, about 1 megabase (2.7% of those positions) have such low coverage that detecting variants at all was not possible. I find it somewhat bemusing that Nebula Genomics' marketing copy describes this product with "Decodes 100% of your DNA with high accuracy," which is only theoretically true. Nonetheless, the results are still very good, as 100% coverage cannot be achieved with NGS sequencing (even at 100x).
+In the protein-coding regions of the genome 88% of positions have a coverage above 20x. Unfortunately, about 1 megabase (2.7% of those positions) have such low coverage that detecting variants at all was not possible. I find it somewhat bemusing that Nebula Genomics' marketing copy describes this product with "Decodes 100% of your DNA with high accuracy," which is only theoretically true. Nonetheless, the results are still very good, as 100% coverage cannot be achieved with NGS sequencing (even at 100x).
 
 
 ## DNA variants and duplication levels
 
 Duplication refers to the presence of the exact same sequence multiple times. Despite the vast amount of short-read data we sequence, the likelihood of such duplicates occurring naturally is actually very low. Thus, high levels of duplication often suggest issues during sample preparation. Due to biases introduced by duplicates, high duplication levels can lead to reduced accuracy in DNA variant detection. Consequently, these duplicates are typically excluded from variant detection. I independently assessed the duplication levels, and discovered that there were 24 million (3.2%) duplicate sequences in the data. This aligns with expectations based on other samples of good quality.
 
-The last file that we are offered to download contains the detected DNA variants in VCF format. For our sample, the total number was a sweeping 4.84 million variants. Depending on the ancestry and the methods used, between 4 and 5 million variants can be expected in a WGS. A. Finally, let's consider the coverage for all detected variants. The average coverage is now 35.32x, and the distribution looks as follows:
+The last file that we are offered to download contains the detected DNA variants in VCF format. For our sample, the total number was a sweeping 4.84 million variants. Depending on the ancestry and the methods used, between 4 and 5 million variants can be expected in a WGS. Finally, let's consider the coverage for all detected variants. The average coverage is now 35.32x, and the distribution looks as follows:
 
 <div id="variants_coverage" style="height: 360px"></div>
 
 
 ## Summary
 
-This concludes our analysis of the WGS data from the direct-to-consumer genetic testing company Nebula Genomics Inc. The sequencing data comes in sufficient quantities and also in very good quality. Together with the read length of 150 bp, which is good by current short-read sequencing standards, this means that most sequences can be aligned to the human genome, enabling the detection of a high number of DNA variants. Furthermore, Nebula Genomics deserves kudos for not only making available the most relevant files (including the complete raw sequences) but also for using standard tools (and consequently known standard contents) to generate these files. 
+This concludes our analysis of the WGS data from the direct-to-consumer genetic testing company
+Nebula Genomics Inc. The sequencing data comes in sufficient quantities and also in very good
+quality. Together with the read length of 150 bp, which is good by current short-read sequencing
+standards, this means that most sequences can be aligned to the human genome, enabling the detection
+of a high number of DNA variants. The coverage remains over 30x even after the alignment and DNA variant
+detection steps, indicating good preparation and processing of my sample (N=1!). Furthermore, Nebula
+Genomics deserves kudos for not only making available the most relevant files (including the
+complete raw sequences) but also for using standard tools (and consequently known standard contents)
+to generate these files. 
 
 In summary, I am pleasantly surprised by the great data one can receive today at such a small cost. I believe that your genome, along with other layers such as the epigenome and your microbiomes, may provide valuable insights into your health, behavior, and other traits in the future. As of today, much of this is still awaiting discovery. However, for the fearless and curious-minded, correlating your DNA variants with current knowledge can be a fun endeavor. The WGS data from Nebula Genomics can provide the foundation for this. In a future post, I will delve into the reports that Nebula already has to offer.
 
