@@ -1,6 +1,6 @@
 ---
 title : "Home"
-description: ""
+description: "This is the personal website of Mario Fasold"
 lead: ""
 date: 2020-04-17T12:18:10+00:00
 lastmod: 2020-04-17T12:18:10+00:00

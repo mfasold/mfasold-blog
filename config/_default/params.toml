@@ -1,6 +1,7 @@
 # Meta Data for SEO
 
 ## Homepage
-title = "Hyas"
+title = "Mario Fasold"
 titleSeparator = "-"
-titleAddition = "The all-in-one Hugo-npm framework"
+titleAddition = "My personal website"
+footer = "© 2023 | <a href=\"/about\">About</a> | <a href=\"/blog/index.xml\">RSS</a>"

@@ -1,0 +1,40 @@
+{{ define "main" }}
+<div class="row justify-content-center">  
+  <div class="col-md-12 col-lg-10 col-xl-8">
+    <h1 class="">All blog posts</h1>
+  </div>
+
+{{ range .Data.Pages.ByDate.Reverse -}}
+ <div class="col-md-12 col-lg-10 col-xl-8 ">
+  <article class="bg-white d-flex flex-column h-100 rounded-3">
+    <div class="p-4 pb-0">          
+    <ul class="post-meta list-inline mb-0" style="color: #555">
+      <li class="list-inline-item">
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" -}}</time>
+      </li>
+{{/*      
+      <li class="list-inline-item">•</li>
+      <li class="list-inline-item">
+        {{ .ReadingTime -}}&nbsp;min read
+      </li>
+*/}}    
+      
+    </ul>
+    <div class="position-relative">
+      <h3 class="h4 post-title mt-2 mb-2 line-clamp clamp-2">
+        <a class="text-body stretched-link" href="{{ .Permalink }}">{{ .Params.title }}</a>
+      </h3>
+      <p class="mb-0 line-clamp clamp-3">{{ .Params.lead | safeHTML }}</p>
+    </div>
+  </div>
+  <div class="post-author mt-auto p-4 pt-0">
+  </div>
+  </article>
+ </div>
+ <div class="d-block mt-5"></div>
+				{{ end -}}
+
+  </div>
+</div>
+{{ end }}
+ 

@@ -3,7 +3,7 @@
     <div class="row justify-content-center">
       <div class="col-md-12 col-lg-10 col-xl-8">
         <a class="navbar-brand" href="{{ "/" | absURL }}">{{ .Site.Params.Title }}</a>
-        {{ if eq .Section "post" }} <span class="nav-subfolder"> /blog </span> {{ end }}
+        {{ if eq .Section "blog" }} <span class="nav-subfolder"> /blog </span> {{ end }}
         {{with .Params.breadcrump}} <span class="nav-subfolder"> /{{ lower . }} </span> {{ end }}
       </div>
     </div>

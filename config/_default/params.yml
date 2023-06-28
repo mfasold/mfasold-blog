@@ -40,7 +40,7 @@ image:
 
 # SEO (@hyas/seo)
 seo:
-  description: "Doks is a Hyas theme for building custom, production-ready documentation websites."
+  description: "This should never be found."
   generate:
     title: true
     meta: true

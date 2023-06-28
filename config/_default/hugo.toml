@@ -13,14 +13,12 @@ rssLimit = 10
 summarylength = 20 # 70 (default)
 copyRight = "Copyright (c) 2023 Mario Fasold"
 
-# RSSLink = "blog/rss.xml"
-
 
 [social]
   twitter = "Mario Fasold"
 
 [outputs]
-  home = ["HTML"]
+  home = ["HTML", "RSS"]
 
 [sitemap]
   changefreq = "monthly"
@@ -38,7 +36,7 @@ copyRight = "Copyright (c) 2023 Mario Fasold"
   tag = "tags"
 
 [permalinks]
-  blog = "/:title/"
+  # blog = "/:title/"
 
 [minify.tdewolff.html]
   keepWhitespace = false
