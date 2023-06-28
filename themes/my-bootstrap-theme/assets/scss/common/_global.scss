@@ -52,11 +52,18 @@ h6,
 }
 
 .section {
-  background: $gray-200;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+   background: $gray-100;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
+.single {
+  background: $gray-100;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+/*
 .section p,
 .section a {
   margin: 0;
@@ -69,6 +76,7 @@ h6,
   height: 2rem;
   vertical-align: text-top;
 }
+*/
 
 .monospace {
   font-family: $font-family-code;

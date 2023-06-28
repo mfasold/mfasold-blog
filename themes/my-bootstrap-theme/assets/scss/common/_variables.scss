@@ -1,13 +1,16 @@
 // Color system
 
-$blue: #0366d6;
-$white: #fff;
+//$blue: #0366d6; // originial
+// $blue: #272464; // https://huemint.com/brand-intersection/#palette=f5fafd-272464-af5745-e5b28a
+$blue: #1d4b9b; // https://huemint.com/bootstrap-basic/#palette=e3e7e4-ffffff-080d0d-1d4b9b-60413f-f15218
+$white: #fff; 
 $black: #333;
 $gray-darker: #586069;
 $gray-dark: #6a737d;
-$gray: #dfe2e5;
-$gray-200: #f6f8fa;
-$gray-light: #fafbfc;
+$gray: #e3e7e4;
+$gray-200: #f6f7f6;
+$gray-light:#f9faf9;
+$gray-100: #fcfcfc; 
 $blue-dark: #038;
 $primary: $blue;
 
