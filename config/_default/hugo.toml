@@ -1,4 +1,4 @@
-title = "Hyas"
+title = "Marios Fasold's Website"
 baseurl = "/"
 canonifyURLs = false
 disableAliases = true
@@ -11,11 +11,13 @@ languageCode = "en-US"
 paginate = 7
 rssLimit = 10
 summarylength = 20 # 70 (default)
+copyRight = "Copyright (c) 2023 Mario Fasold"
 
-copyRight = "Copyright (c) 2023 Hyas"
+# RSSLink = "blog/rss.xml"
+
 
 [social]
-  twitter = "gethyas"
+  twitter = "Mario Fasold"
 
 [outputs]
   home = ["HTML"]
@@ -32,6 +34,8 @@ copyRight = "Copyright (c) 2023 Hyas"
 
 [taxonomies]
   category = "categories"
+  author = "authors"
+  tag = "tags"
 
 [permalinks]
   blog = "/:title/"
