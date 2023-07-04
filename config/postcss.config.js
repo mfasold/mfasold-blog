@@ -10,6 +10,7 @@ module.exports = {
         './node_modules/@hyas/core/layouts/**/*.html',
         './themes/my-bootstrap-theme/layouts/**/*.html',
         './content/**/*.md',
+        './layouts/**/*.html',
       ],
       safelist: [
         'lazyloaded',
