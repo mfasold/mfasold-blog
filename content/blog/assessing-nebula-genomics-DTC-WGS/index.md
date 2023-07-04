@@ -172,14 +172,13 @@ The last file that we are offered to download contains the detected DNA variants
 
 <div id="variants_coverage" style="height: 360px"></div>
 
-
 ## Summary
 
 This concludes our analysis of the WGS data from the direct-to-consumer genetic testing company
 Nebula Genomics Inc. The sequencing data comes in sufficient quantities and also in very good
 quality. Together with the read length of 150 bp, which is good by current short-read sequencing
 standards, this means that most sequences can be aligned to the human genome, enabling the detection
-of a high number of DNA variants. The coverage remains over 30x even after the alignment and DNA variant
+of a high number of DNA variants. The coverage remains significantly over 30x even after the alignment and DNA variant
 detection steps, indicating good preparation and processing of my sample (N=1!). Furthermore, Nebula
 Genomics deserves kudos for not only making available the most relevant files (including the
 complete raw sequences) but also for using standard tools (and consequently known standard contents)

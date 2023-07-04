@@ -87,7 +87,7 @@ I co-founded the following startups.
 - [Twitter]() (inactive)
 
 ### 🥏 Hobbies
-I like sports, traveling, photography and more.
+I like sports, in particular Ultimate Frisbee and Cycle Cross Biking, traveling, photography and more.
 
 - [Ultimate Frisbee in Leipzig](http://www.saxydivers.de)
 - [Tipps for a travel to Hawaii](http://hawaiitips.pbworks.com/)
