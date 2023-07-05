@@ -1,11 +1,13 @@
 {{ define "main" }}
 <div class="row justify-content-center">
   <div class="col-lg-7 pb-5 text-center">
-    {{/*
-    {{ partial "img" "startpage-alps.png" }}
-    */}}
-    <img class="img-simple p-1 img-fluid lazyload" alt="EH illustration" src="startpage-eh1.png"/>    
-    <p class="meta"> {{ .Content }} </p>
+{{ partial "picture" (dict
+  "ctx" .
+  "src" "startpage-eh1.png"
+  "class" "p-1 img-fluid lazyload"
+  "alt" "Ernst Haeckel illustration"
+) }}
+<p class="meta"> {{ .Content }} </p>
 {{/*
     <h1>{{ .Title }}</h1>
     <p>{{ .Params.Lead | safeHTML }}</p>
