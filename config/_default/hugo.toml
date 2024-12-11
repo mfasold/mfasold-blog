@@ -57,7 +57,7 @@ copyRight = "Copyright (c) 2023 Mario Fasold"
 
 [imaging]
   anchor = 'Smart'
-  bgColor = '#fff'
-  hint = 'photo'
+  bgColor = '#fcfcfc'
+  hint = 'picture'
   quality = 90
   resampleFilter = 'Lanczos'

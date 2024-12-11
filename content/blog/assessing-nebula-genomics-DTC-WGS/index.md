@@ -2,8 +2,8 @@
 title: "A Bioinformatician's Perspective on Direct-to-Consumer Whole-Genome Sequencing from Nebula Genomics"
 description: "A personal assessment of the results from Nebula Genomics’ Deep Whole Genome Sequencing product"
 lead: "Part 1: Introduction and assessment of the downloadable data"
-date: 2023-06-22
-lastmod: 2023-06-22
+date: 2023-07-06
+lastmod: 2023-07-06
 draft: false
 weight: 50
 images: ["ng_unboxing.jpg"]
@@ -13,6 +13,8 @@ _build:
   render: true
   list: always
   publishResources: true
+image:
+  # sizes: 30em
 ---
 
 In the course of my job, I am deeply involved in the analysis of DNA sequencing data. I oversee the
@@ -185,6 +187,8 @@ complete raw sequences) but also for using standard tools (and consequently know
 to generate these files. 
 
 In summary, I am pleasantly surprised by the great data one can receive today at such a small cost. I believe that your genome, along with other layers such as the epigenome and your microbiomes, may provide valuable insights into your health, behavior, and other traits in the future. As of today, much of this is still awaiting discovery. However, for the fearless and curious-minded, correlating your DNA variants with current knowledge can be a fun endeavor. The WGS data from Nebula Genomics can provide the foundation for this. In a future post, I will delve into the reports that Nebula already has to offer.
+
+*Update 2024/03:* Some time later, Nebula Genomics provided me with the actual reference genome. It is [this one](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/001/405/GCA_000001405.15_GRCh38/seqs_for_alignment_pipelines.ucsc_ids/GCA_000001405.15_GRCh38_no_alt_analysis_set.fna.gz) from NCBI with additional decoy sequences added. 
 
 
 <script src="https://code.highcharts.com/highcharts.js"></script>
