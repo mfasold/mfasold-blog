@@ -1,30 +1,30 @@
 [[mounts]]
-  source = "node_modules/@hyas/core/assets"
+  source = "node_modules/@thulite/bootstrap/assets"
   target = "assets"
 
 [[mounts]]
-  source = "node_modules/@hyas/core/layouts"
+  source = "node_modules/@thulite/bootstrap/layouts"
   target = "layouts"
 
 [[mounts]]
-  source = "node_modules/@hyas/bootstrap/assets"
+  source = "node_modules/@thulite/core/assets"
   target = "assets"
 
 [[mounts]]
-  source = "node_modules/@hyas/bootstrap/layouts"
+  source = "node_modules/@thulite/core/layouts"
   target = "layouts"
 
 [[mounts]]
-  source = "node_modules/@hyas/seo/layouts"
+  source = "node_modules/@thulite/seo/layouts"
   target = "layouts"
 
 [[mounts]]
-  source = "node_modules/@hyas/images/assets"
+  source = "node_modules/@thulite/images/assets"
   target = "assets"
   excludeFiles = "/scss/**.scss"
 
 [[mounts]]
-  source = "node_modules/@hyas/images/layouts"
+  source = "node_modules/@thulite/images/layouts"
   target = "layouts"
 
 [[mounts]]
@@ -42,3 +42,30 @@
 [[mounts]]
   source = "layouts"
   target = "layouts"
+
+
+# mounts - Added after thulite v2 update, see https://docs.thulite.io/install/manual/#6-create-configuration-files
+## archetypes
+[[mounts]]
+  source = "archetypes"
+  target = "archetypes"
+
+## content
+[[mounts]]
+  source = "content"
+  target = "content"
+
+## data
+[[mounts]]
+  source = "data"
+  target = "data"
+
+## i18n
+[[mounts]]
+  source = "i18n"
+  target = "i18n"
+
+## static
+[[mounts]]
+  source = "static"
+  target = "static"

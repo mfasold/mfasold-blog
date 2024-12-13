@@ -12,6 +12,21 @@ module.exports = {
         './content/**/*.md',
         './layouts/**/*.html',
       ],
+      extractors: [
+        {
+          extractor: (content) => {
+            const els = JSON.parse(content).htmlElements;
+            return els.tags.concat(els.classes, els.ids);
+          },
+          extensions: ['json'],
+        },
+      ],        
+      dynamicAttributes: [
+        'aria-expanded',
+        'id',
+        'size',
+        'type',
+      ],        
       safelist: [
         'lazyloaded',
         'table',

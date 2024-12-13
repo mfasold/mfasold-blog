@@ -13,9 +13,11 @@ rssLimit = 10
 summarylength = 20 # 70 (default)
 copyRight = "Copyright (c) 2023 Mario Fasold"
 
+[build.buildStats]
+  enable = true
 
-[social]
-  twitter = "Mario Fasold"
+[minify.tdewolff.html]
+  keepWhitespace = false
 
 [outputs]
   home = ["HTML", "RSS"]
@@ -38,9 +40,6 @@ copyRight = "Copyright (c) 2023 Mario Fasold"
 [permalinks]
   # blog = "/:title/"
 
-[minify.tdewolff.html]
-  keepWhitespace = false
-
 [related]
   threshold = 80
   includeNewer = true
@@ -56,8 +55,24 @@ copyRight = "Copyright (c) 2023 Mario Fasold"
     weight = 10
 
 [imaging]
-  anchor = 'Smart'
+  anchor = "Center" # 'Smart'
   bgColor = '#fcfcfc'
   hint = 'picture'
   quality = 90
   resampleFilter = 'Lanczos'
+
+[markup]
+  [markup.highlight]
+    anchorLineNos = false
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ''
+    hl_inline = false
+    lineAnchors = ''
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = true
+    noHl = false
+    style = 'emacs'
+    tabWidth = 4

@@ -1,36 +1,27 @@
 {
   "name": "mfasold-hyas-blog",
   "version": "0.0.0",
-  "description": "Hyas",
-  "author": "Hyas",
+  "description": "Thulite",
+  "author": "Thulite",
   "license": "MIT",
   "scripts": {
-    "dev": "exec-bin node_modules/.bin/hugo/hugo server --bind=0.0.0.0 --disableFastRender --baseURL=http://localhost --noHTTPCache",
-    "dev:drafts": "exec-bin node_modules/.bin/hugo/hugo server --bind=0.0.0.0 --disableFastRender --baseURL=http://localhost --noHTTPCache --buildDrafts",
-    "create": "exec-bin node_modules/.bin/hugo/hugo new",
-    "lint": "npm run lint:scripts && npm run lint:styles && npm run lint:markdown",
-    "lint:scripts": "eslint --cache config",
-    "lint:styles": "stylelint --cache \"assets/scss/**/*.{css,sass,scss}\"",
-    "lint:markdown": "markdownlint-cli2 \"*.md\" \"content/**/*.md\"",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "exec-bin node_modules/.bin/hugo/hugo --minify",
-    "preview": "http-server --gzip --brotli --ext=html --cors",
-    "clean": "npm run clean:build && npm run clean:lint && npm run clean:install",
-    "clean:build": "shx rm -rf public resources .hugo_build.lock",
-    "clean:install": "shx rm -rf node_modules package-lock.json yarn.lock pnpm-lock.yaml",
-    "clean:lint": "shx rm -rf .eslintcache .stylelintcache",
-    "preinfo": "npm version",
-    "info": "npm list",
-    "postinfo": "exec-bin node_modules/.bin/hugo/hugo version",
-    "postinstall": "shx rm -rf node_modules/.bin/hugo && shx mkdir node_modules/.bin/hugo && shx cp node_modules/gethyas/node_modules/.bin/hugo/* node_modules/.bin/hugo"
-  },
-  "devDependencies": {
-    "@hyas/bootstrap": "^1.0.2",
-    "@hyas/images": "^1.0.2",
-    "@hyas/seo": "^1.0.3",
-    "gethyas": "^2.1.0"
+    "create": "hugo new",
+    "dev": "hugo server --disableFastRender --noHTTPCache",
+    "format": "prettier **/** -w -c",
+    "build": "hugo --minify --gc",
+    "preview": "vite preview --outDir public"
   },
   "engines": {
-    "node": ">=16.12.0"
+    "node": ">=20.11.0"
+  },
+  "dependencies": {
+    "@thulite/bootstrap": "^1.2.0",
+    "@thulite/images": "^3.3.0",
+    "@thulite/seo": "^2.4.1",
+    "thulite": "^2.5.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.4.2",
+    "vite": "^6.0.3"
   }
 }
