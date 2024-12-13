@@ -40,7 +40,7 @@ Thus, the fundamental design shall include two components: a "server-side" web a
   
 Capturing the contents of a website using Playwright is pretty straightforward. Here is the code to navigate to the page with the timetable:
 
-{{< highlight python >}}
+```python
 from playwright.sync_api import sync_playwright, Playwright
 def run(p: Playwright):
     browser = p.chromium.launch()
@@ -52,7 +52,7 @@ def run(p: Playwright):
     page.goto("$URL")
     page.get_by_role("link", name="Auswahl").click()
     page.get_by_text("5d").click()
-{{< / highlight >}}
+```
 
 This launches a browser (Chromium), defines the size of the viewport, opens a new page with our target URL, and clicks on a button on this page as well as on the next page. Note that in my case, I had to use the (quite unusual) Basic HTTP Authentication mechanism—on most pages, you can skip the `http_credentials=...` and instead [fill](https://playwright.dev/python/docs/api/class-locator#locator-fill) a login form with a username and password and click on the button. To get the code above, you can either inspect the website's HTML source or use Playwright's [codegen](https://playwright.dev/python/docs/codegen-intro) to record your actions on the website and spill out the code for you.
 
@@ -69,7 +69,7 @@ Luckily, there is a way to save this work: instead of replicating the page forma
   
 Turns out Playwright already has solutions for us. We can take a screenshot not only of the full page but of specific elements on this page. In my case, I can locate the HTML element with the class ui-content and take a screenshot of this element only. Furthermore, we can adjust the styles of the elements in our screenshot to match how we want them later on our e-paper display. There are, in fact, several ways to do it, for example, using the [evaluate function](https://playwright.dev/python/docs/api/class-locator#locator-evaluate) for elements, using the style property of the [screenshot function](https://playwright.dev/python/docs/api/class-locator#locator-screenshot), or, as I did, using the [add_script_tag](https://playwright.dev/python/docs/api/class-page#page-add-script-tag) function of the page. In this case, I replace the gray backgrounds with white and reduce some paddings and margins. The "zoom level" can be adjusted with the viewport and deviceScaleFactor properties of the browser context, as we did earlier. The following code does all of this, completing our run function from above, including closing the browser and returning the screenshot image.
 
-{{< highlight python>}}
+```python
     js_scipt  = """
     document.querySelector('.ui-content').style.background="#FFF";
     document.querySelector('.ui-content').style.padding="5px";
@@ -84,7 +84,7 @@ Turns out Playwright already has solutions for us. We can take a screenshot not 
     context.close()
     browser.close()
     return image
-{{< / highlight >}}
+```
 
 Playwright generates an image in PNG format, so we can take the output of this function and write it to a PNG file. It looks as follows:
 
@@ -96,7 +96,7 @@ If the device library supports displaying colored PNG images, I could just serve
   
 This type of image manipulation is best done using the [Pillow](https://pillow.readthedocs.io/en/stable/index.html) library. So we begin our function by getting the screenshot from Playwright and converting it to a Pillow image object:
 
-{{< highlight python>}}
+```python
 def get_full_image():
     # Get image of website section
     with sync_playwright() as playwright:
@@ -104,11 +104,11 @@ def get_full_image():
 
     # Convert image data to Pillow image object
     screenshot = Image.open(io.BytesIO(png_data))
-{{< / highlight >}}
+```
 
 Next, we define our palette, which consists of the six displayable colors plus white. The definition of those colors was easily found in the [Inkplate documentation](https://inkplate.readthedocs.io/en/latest/arduino.html#inkplate-drawbitmap). We then create a new image with this restricted palette, corresponding to ["P" mode](https://pillow.readthedocs.io/en/stable/handbook/concepts.html) images in Pillow. The `image.quantize` function will find, for each color in the image, the closest color in our new palette. At this point, one could experiment with various dithering techniques—I didn't. The quantized image is pasted into the new image to ensure that the size is always the same. Finally, the bytes of the image are returned:
 
-{{< highlight python>}}
+```python
     # The 6 colors of inkplate color
     palette = [
         0, 0, 0, # black
@@ -135,13 +135,13 @@ Next, we define our palette, which consists of the six displayable colors plus w
     result_img.paste(screenshot.crop(box), box)
     
     return result_img.tobytes()
-{{< / highlight >}}
+```
 
 ## Serving the image 
 After we extracted the information from the website and generated the image, we would like to make this available as a web application on the internet. 
 
 We use the `Werkzeug` library to create a very simple webserver:
-{{< highlight python>}}
+```python
 from werkzeug.wrappers import Request, Response
 from werkzeug.serving import run_simple
 
@@ -151,13 +151,14 @@ def application(environ, start_response):
 
 if __name__ == '__main__':
     run_simple('0.0.0.0', 5050, application) 
-{{< / highlight >}}
+```
 
 Note that the `run_simple` web server is not meant for production web services. I do think it will be okay for a handful of requests per day.
 
 There are now several options for hosting our application. Ideally, it should be easy to deploy, require minimal maintenance, and not cost too much. Maybe you already have a VPS that you can use. Otherwise, suitable hosting options would be Fly.io or Google Cloud Run. I chose the former, as I already have an account there.
 
 In both cases, we need to create a Docker container with our application and its dependencies. So we need Python and the Python packages `pillow`, `Werkzeug`, and `playwright`. We also must install the browser using `playwright install --with-deps chromium`. Once we have all this defined in a `Dockerfile`, created an account on Fly.io, and installed its CLI tool `flyctl`, deployment might be as simple as `fly launch`. Here you directly get a URL like `my-cool-scraper.fly.dev` that allows us to request the image from the internet!
+
 ## Displaying the image on the e-ink device
 I would like to fetch and display the image at four specified times a day to have the latest updates to the schedule displayed before school, as well as in the afternoon for packing the school bag for the next day. In between, the device should run in a low-power mode so that I can leave it running on battery for as long as possible. In other words, the e-ink display should wake up at four 'alarm' times, update the image, and then go to deep sleep.
 
