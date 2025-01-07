@@ -29,7 +29,7 @@ This post describes the design decisions and implementation of my low-power e-pa
 
 Let me be upfront: I want this to be a low-effort project. I don't want to spend a lot of time soldering hardware components, doing low-level programming, or studying rough documentation. I want a smooth DIY experience, and it would be acceptable to spend a little bit more on the hardware in exchange.
   
-To this end, I was recommended the products from [Soldered](https://soldered.com/). In particular, I found the e-paper display line called Inkscape particularly appealing. They contain an ESP32 microcontroller that is particularly suitable with a sleep mode and extremely low power consumption. It has on-board Wi-Fi to fetch data from the internet. It has a battery charger and a Real-Time Clock to schedule display updates. Additionally, it has documentation with many examples that match the use case. In my case, I went for the [Inkplate 6COLOR](https://soldered.com/product/inkplate-6color-color-e-paper-board-copy/) featuring a 600x448 px display with 6 colors. I know the school timetable displays changes in red, so colors might be useful. I opted for the all-inclusive set, with the board, e-paper display, enclosure, and battery for a price of 169 EUR.
+To this end, I was recommended the products from [Soldered](https://soldered.com/). In particular, I found the e-paper display line called Inkplate particularly appealing. They contain an ESP32 microcontroller that is particularly suitable with a sleep mode and extremely low power consumption. It has on-board Wi-Fi to fetch data from the internet. It has a battery charger and a Real-Time Clock to schedule display updates. Additionally, it has documentation with many examples that match the use case. In my case, I went for the [Inkplate 6COLOR](https://soldered.com/product/inkplate-6color-color-e-paper-board-copy/) featuring a 600x448 px display with 6 colors. I know the school timetable displays changes in red, so colors might be useful. I opted for the all-inclusive set, with the board, e-paper display, enclosure, and battery for a price of 169 EUR.
   
 After the delivery, I played a bit with the various examples that are available in their public repositories. There are two ways to program the board: either using Arduino or MicroPython. At first glance, the examples and documentation for Arduino have more meat on the bones. However, with the hope of keeping line counts low—and without actual knowledge of the consequences and tradeoffs—I decided to give MicroPython a go. With the examples, I was quickly able to draw text and shapes on the screen, connect to the internet, show the battery status, and, importantly, display color images.
 
@@ -45,7 +45,7 @@ from playwright.sync_api import sync_playwright, Playwright
 def run(p: Playwright):
     browser = p.chromium.launch()
     context = browser.new_context(
-        http_credentials={"username": "$USER", "password": "$PWD"},
+        http_credentials={"username": "$USER", "password": "$PASSWD"},
         viewport={ 'width': 270, 'height': 700 }
     )
     page = context.new_page()
@@ -146,7 +146,7 @@ from werkzeug.wrappers import Request, Response
 from werkzeug.serving import run_simple
 
 def application(environ, start_response):
-    response = Response(get_full_image(), mimetype='application/octet-stream')   
+    response = Response(get_full_image(), mimetype='application/octet-stream')
     return response(environ, start_response)
 
 if __name__ == '__main__':
@@ -181,7 +181,7 @@ The following steps will be performed each time the device wakes up:
 
 Note that I make use of features supported by the specific hardware built into the device. In particular, there is a Real-Time Clock (RTC) module that can provide the current time, set an alarm to wake up the device, and even store a limited amount of variables. I use this to store the index of the current alarm. Just remember to insert the required coin battery!
 
-The `set_alarm` function of the Inkscape Arduino library requires me to specify the day of the month and the day of the week. However, I could not find a library function to advance from the current day to the next day, and dealing with all the special cases with dates myself was clearly out of scope. There is a second set alarm function that is based on the Unix Epoch format, which would make it easy to specify time deltas, but this did not work reliably. So I ended up with a super-clever workaround, where I wake the device up at 23:59 if the alarm is on the next day, wait a minute, and then set the correct alarm on the now-current day. Hey, it's a hobby project :)
+The `set_alarm` function of the Inkplate Arduino library requires me to specify the day of the month and the day of the week. However, I could not find a library function to advance from the current day to the next day, and dealing with all the special cases with dates myself was clearly out of scope. There is a second set alarm function that is based on the Unix Epoch format, which would make it easy to specify time deltas, but this did not work reliably. So I ended up with a super-clever workaround, where I wake the device up at 23:59 if the alarm is on the next day, wait a minute, and then set the correct alarm on the now-current day. Hey, it's a hobby project :)
 
 While we are at it... I found that the fetching of the image quite often fails on the first try. I suspect that this might be related to the autostop/autostart of machines hosted on fly.io based on incoming requests. So if the image fetching function reports an error on the first try, I just run it again. This brings me to 99.99% reliability—practically an SLA, if you ignore the fine print.
 
@@ -193,3 +193,5 @@ The beauty of this approach is a) that we can fetch arbitrary webpage contents�
 However, one caveat: I originally hoped to be able to finish this project in maybe 20 hours of hands-on time. In the end, I estimate that it was more like 50 hours. But at least 10 hours of this were spent trying to implement it in MicroPython. I really wish I had known earlier that the MicroPython library for Inkplate devices is not a first-class citizen. However, if you are looking into pursuing a similar project, I think you can do it in less than 20 hours using the [code on GitHub](https://github.com/mfasold/epaper-display-website).
 
 As a final note, I am fully aware that even this time is probably more than the sum of the time spent checking on the phone each morning and afternoon for several years. But it eases me a lot that I just need to do one task less every morning—one interruption less from other activities. So I am actually happy with the end result. And if I feel like that in the future, there is potential to add other functions, like displaying a weather widget or random family pictures in the meantime.
+
+*Edit (Dec 16): This article has been discussed [on HN](https://news.ycombinator.com/item?id=42408546)! I corrected the typos pointed out there.*
