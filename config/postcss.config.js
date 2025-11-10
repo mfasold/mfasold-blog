@@ -42,6 +42,7 @@ module.exports = {
         'img-fluid',
         'lazyload',
         'blur-up',
+        'pre',
         ...whitelister([
           './node_modules/@hyas/core/assets/scss/app.scss',
         ]),

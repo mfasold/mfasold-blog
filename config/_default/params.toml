@@ -6,6 +6,10 @@ titleSeparator = "-"
 titleAddition = "My personal website"
 footer = "© 2025 | <a href=\"/about\">About</a> | <a href=\"/blog/index.xml\">RSS</a>"
 
+[seo.schemas]
+type = "Person"
+name = "Mario Fasold"
+# logo = "/images/logo.png"
 
 [social]
   twitter = "Mario Fasold"
